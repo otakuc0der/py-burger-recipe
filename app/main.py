@@ -14,9 +14,9 @@ class Validator(ABC):
             self,
             instance: BurgerRecipe | None,
             owner: type
-    ) -> int | str:
+    ) -> int | str | Validator:
         if instance is None:
-            raise ValueError("No instance was given")
+            return self
         return getattr(instance, self.protected_name)
 
     @abstractmethod
